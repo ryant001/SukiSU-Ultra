@@ -155,3 +155,15 @@ jobs:
       - name: Build with Gradle
         if: ${{ steps.determine.outputs.SKIP != 'true' }}
         run: ./gradlew clean assembleRelease
+        
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.determine.outputs.title }}
+          path: manager/app/build/outputs/apk/release/*.apk
+
+      - name: Upload mappings
+        uses: actions/upload-artifact@v4
+        with:
+          name: "${{ steps.determine.outputs.title }}-mappings"
+          path: "manager/app/build/outputs/mapping/release/"
