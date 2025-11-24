@@ -53,13 +53,3 @@ jobs:
 
       - name: Install dependencies
         run: bun install --cache
-
-      - name: Run telegram bot script
-        env:
-          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_GROUP_ID: ${{ secrets.TELEGRAM_GROUP_ID }}
-          TELEGRAM_TOPIC_COMMITS: ${{ secrets.TELEGRAM_TOPIC_COMMITS }}
-          TELEGRAM_TOPIC_PRS: ${{ secrets.TELEGRAM_TOPIC_PRS }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_EVENT_PATH: ${{ github.event_path }}
-        run: bun run send.ts
