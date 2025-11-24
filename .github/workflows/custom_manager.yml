@@ -1,26 +1,7 @@
 name: Build Custom Manager
 
 on:
-  push:
-    branches: [ "main", "dev", "ci", "miuix" ]
-    paths:
-      - '.github/workflows/build-manager.yml'
-      - '.github/workflows/build-lkm.yml'
-      - 'manager/**'
-      - 'kernel/**'
-      - 'userspace/ksud/**'
-      - 'userspace/user_scanner/**'
-  pull_request:
-    branches: [ "main", "dev", "miuix" ]
-    paths:
-      - '.github/workflows/build-manager.yml'
-      - '.github/workflows/build-lkm.yml'
-      - 'manager/**'
-      - 'kernel/**'
-      - 'userspace/ksud/**'
-      - 'userspace/user_scanner/**'
-  workflow_call:
-
+  workflow_dispatch:
 jobs:
   build-lkm:
     uses: ./.github/workflows/build-lkm.yml
